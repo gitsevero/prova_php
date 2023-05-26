@@ -14,6 +14,24 @@ if (!$conexao) {
   die("Falha na conexão: " . mysqli_connect_error());
 }
 
+if (isset($_GET['download_pdf'])) {
+  // Inclua o arquivo de classe do mPDF
+  require_once 'vendor/autoload.php';
+
+  // Crie uma instância do mPDF
+  $mpdf = new \Mpdf\Mpdf();
+
+  // Renderize o HTML atual no mPDF
+  $html = ob_get_clean();
+  $mpdf->WriteHTML($html);
+
+  // Gere o nome do arquivo PDF com base na data e hora atual
+  $filename = 'relatorio_' . date('YmdHis') . '.pdf';
+
+  // Envie o PDF para o navegador para download
+  $mpdf->Output($filename, 'D');
+  exit();}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,6 +40,7 @@ if (!$conexao) {
   <title>Registros de Produtos</title>
 </head>
 <body>
+<button><a href="?download_pdf=true">PDF</a></button>
   <main>
   <h2> Produtos</h2>
   <div>
