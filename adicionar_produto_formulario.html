@@ -3,26 +3,31 @@
 
 <head>
     <title>Adicionar Produto</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <h1>Adicionar Produto</h1>
+    <main>
+        <form method="POST" action="adicionar_produto.php">
+            <label for="categoria">Nome da categoria:</label>
+            <input type="text" name="nome_categoria" required><br>
 
-    <form method="POST" action="adicionar_produto.php">
-        <label for="categoria">Nome da categoria:</label>
-        <input type="text" name="nome_categoria" required><br>
+            <label for="nome">Nome do produto:</label>
+            <input type="text" name="nome_produto" required><br>
 
-        <label for="nome">Nome do produto:</label>
-        <input type="text" name="nome_produto" required><br>
+            <label for="descricao">Descrição:</label>
+            <textarea name="descricao" required></textarea><br>
 
-        <label for="descricao">Descrição:</label>
-        <textarea name="descricao" required></textarea><br>
+            <label for="preco">Preço:</label>
+            <input type="text" name="preco" required><br>
 
-        <label for="preco">Preço:</label>
-        <input type="text" name="preco" required><br>
+            <input type="submit" value="Adicionar Produto">
+        </form>
+    </main>
 
-        <input type="submit" value="Adicionar Produto">
-    </form>
+
 </body>
 
 </html>
