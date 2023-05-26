@@ -1,4 +1,6 @@
 <?php
+
+
 $servername = "localhost";
 $username = "root";
 $password = "9jnE[NGWw!zXHLqX";
@@ -11,8 +13,8 @@ $conexao = mysqli_connect($servername, $username, $password, $database);
 if (!$conexao) {
   die("Falha na conexão: " . mysqli_connect_error());
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +24,15 @@ if (!$conexao) {
 <body>
   <main>
   <h2> Produtos</h2>
-  <table>
-   
-       
+  <div>
+    <button id="novo-produto"><a href="adicionar_produto_formulario.html">Novo produto</a></button>
+    <button><a href='/prova_php/relatorio/txt_download.php'>TXT</a> </button>
+    
+    <button><a href='/prova_php/relatorio/excel_download.php'>EXCEL</a> </button>
+    <button>PDF</button>
+  </div>
+  <table id="produtos-table">
+    <tr>
       <th>ID</th>
       <th>Categoria</th>
       <th>Nome</th>
@@ -50,4 +58,5 @@ if (!$conexao) {
   </table>
   </main>
 </body>
+
 </html>
