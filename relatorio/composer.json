@@ -2,7 +2,6 @@
     "require": {
         "phpoffice/phpspreadsheet": "^1.28",
         "setasign/fpdi-tcpdf": "^2.3",
-        "tecnickcom/tcpdf": "^6.6",
-        "mpdf/mpdf": "^8.0"
+        "tecnickcom/tcpdf": "^6.6"
     }
 }

@@ -88,7 +88,7 @@ header("Content-Length: " . filesize($nomeArquivo));
 // Envia o conteúdo do arquivo para o navegador
 readfile($nomeArquivo);
 
-// Remove o arquivo após o download
+// Exclui o arquivo Excel
 unlink($nomeArquivo);
 exit;
 ?>

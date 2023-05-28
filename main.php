@@ -14,49 +14,37 @@ if (!$conexao) {
   die("Falha na conexão: " . mysqli_connect_error());
 }
 
-if (isset($_GET['download_pdf'])) {
-  // Inclua o arquivo de classe do mPDF
-  require_once 'vendor/autoload.php';
-
-  // Crie uma instância do mPDF
-  $mpdf = new \Mpdf\Mpdf();
-
-  // Renderize o HTML atual no mPDF
-  $html = ob_get_clean();
-  $mpdf->WriteHTML($html);
-
-  // Gere o nome do arquivo PDF com base na data e hora atual
-  $filename = 'relatorio_' . date('YmdHis') . '.pdf';
-
-  // Envie o PDF para o navegador para download
-  $mpdf->Output($filename, 'D');
-  exit();}
-
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" href="style_main.css">
+  <link rel="stylesheet" href="header.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="functions/deletar_ajax.js"></script>
   <title>Registros de Produtos</title>
 </head>
 <body>
-<button><a href="?download_pdf=true">PDF</a></button>
+  <header>
+    <p> <a href="adicionar_produto_formulario.html"> Cadastro de produtos</a></p>
+    <p> <a href="main.php">Home</a> </p>
+    <p>produtos</p>
+  </header>
   <main>
   <h2> Produtos</h2>
   <div>
     <button id="novo-produto"><a href="adicionar_produto_formulario.html">Novo produto</a></button>
-    <button><a href='/prova_php/relatorio/txt_download.php'>TXT</a> </button>
-    
-    <button><a href='/prova_php/relatorio/excel_download.php'>EXCEL</a> </button>
-    <button>PDF</button>
+    <button><a href='relatorio/txt_download.php'>TXT</a> </button>
+    <button><a href='relatorio/excel_download.php'>EXCEL</a> </button>
+    <button><a href='relatorio/pdf.php'>PDF</a></button>
   </div>
   <table id="produtos-table">
     <tr>
-      <th>ID</th>
-      <th>Categoria</th>
-      <th>Nome</th>
-      <th>Descrição</th>
-      <th>Preço</th>
+      <td>Categoria</td>
+      <td>Nome</td>
+      <td>Descrição</td>
+      <td>Preço</td>
+      <td></td>
     </tr>
     <?php
     // Consulta SQL para obter os registros da tabela
@@ -66,13 +54,15 @@ if (isset($_GET['download_pdf'])) {
     // Loop para exibir os registros na tabela
     while ($row = mysqli_fetch_assoc($resultado)) {
       echo "<tr>";
-      echo "<td>" . $row['id'] . "</td>";
       echo "<td>" . $row['nome_categoria'] . "</td>";
       echo "<td>" . $row['nome_produto'] . "</td>";
       echo "<td>" . $row['descricao'] . "</td>";
       echo "<td>" . $row['preco'] . "</td>";
+      echo "<td id='edit'><a href='#' class='deletar-link' data-id='" . $row['id'] . "' data-nome='" . $row['nome_produto'] . "'>deletar</a></td>";
       echo "</tr>";
-    }
+}
+    
+    
     ?>
   </table>
   </main>

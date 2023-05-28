@@ -1,4 +1,3 @@
-
 <?php
 $servername = "localhost";
 $username = "root";
@@ -19,7 +18,8 @@ $preco = $_POST['preco'];
 $sql = "INSERT INTO produtos (nome_categoria, nome_produto, descricao, preco) VALUES ('$nome_categoria', '$nome_produto', '$descricao', '$preco')";
 
 if ($conn->query($sql) === TRUE) {
-    header("Location: adicionar_produto_formulario.html"); 
+    // Redireciona para a página de formulário com o parâmetro de sucesso
+    header("Location: adicionar_produto_formulario.html?success=true");
     exit;
 } else {
     echo "Erro ao adicionar o produto: " . $conn->error;

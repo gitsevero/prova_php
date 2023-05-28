@@ -5,9 +5,15 @@
     <title>Adicionar Produto</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="header.css">
 </head>
 
 <body>
+    <header>
+        <p> <a href="adicionar_produto_formulario.html">Cadastro de produtos</a> </p>
+        <p> <a href="main.php">Home</a> </p>
+        <p>produtos</p>
+    </header>
     <h1>Adicionar Produto</h1>
     <main>
         <form method="POST" action="adicionar_produto.php">
@@ -27,7 +33,16 @@
         </form>
     </main>
 
+    <script>
+        // Verifica se o parâmetro de consulta "success" está presente na URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const successParam = urlParams.get('success');
 
+        // Se o parâmetro "success" for "true", exibe um alerta de sucesso
+        if (successParam === 'true') {
+            alert('Produto adicionado com sucesso!');
+        }
+    </script>
 </body>
 
 </html>
