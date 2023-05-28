@@ -1,12 +1,12 @@
 $(document).ready(function () {
-    // Função para deletar um produto
+
     function deletarProduto(id, nome) {
         $.ajax({
             type: "GET",
             url: "deletar_produto.php",
             data: { id: id },
             success: function () {
-                // Atualize a tabela após a exclusão bem-sucedida
+
                 location.reload();
             },
             error: function () {
@@ -15,7 +15,7 @@ $(document).ready(function () {
         });
     }
 
-    // Manipulador de evento para o link de deletar
+
     $("body").on("click", ".deletar-link", function (e) {
         e.preventDefault();
         var id = $(this).data("id");
