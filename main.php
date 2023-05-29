@@ -1,4 +1,6 @@
-<?php  include 'func_php/conexao.php';?>
+<?php
+include 'functions/conexao.php';
+?>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +12,6 @@
     <script src="functions/deletar_ajax.js"></script>
     <title>Registros de Produtos</title>
     <script>
-       
         function removeURLParams() {
             if (history.replaceState) {
                 var cleanURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
@@ -18,11 +19,9 @@
             }
         }
 
-       
         const urlParams = new URLSearchParams(window.location.search);
         const successParam = urlParams.get('success');
 
-     
         if (successParam === 'true') {
             alert('Alterações foram salvas com sucesso!');
             removeURLParams();
@@ -39,7 +38,6 @@
     <main>
         <h2> Produtos</h2>
         <div id="buttons">
-          
             <button id="novo-produto"><a href="adicionar_produto_formulario.html">Novo produto</a></button>
             <button><a href='relatorio/txt_download.php'>TXT</a> </button>
             <button><a href='relatorio/excel_download.php'>EXCEL</a> </button>
@@ -52,23 +50,21 @@
                 <td>Descrição</td>
                 <td>Preço</td>
                 <td></td>
-               
             </tr>
             <?php
-            
-            $sql = "SELECT * FROM produtos";
+            $sql = "SELECT id, nome_categoria, nome_produto, descricao, CONCAT(preco, ' ', moeda) AS preco_com_moeda FROM produtos";
             $resultado = mysqli_query($conexao, $sql);
-
+            
             while ($row = mysqli_fetch_assoc($resultado)) {
                 echo "<tr>";
                 echo "<td>" . $row['nome_categoria'] . "</td>";
                 echo "<td>" . $row['nome_produto'] . "</td>";
                 echo "<td>" . $row['descricao'] . "</td>";
-                echo "<td>" . $row['preco'] . "</td>";
-                
+                echo "<td>" . $row['preco_com_moeda'] . "</td>";
                 echo "<td id='edit'><a href='editar_produto.php?id=" . $row['id'] . "'>editar</a>|<a href='detalhes_produto.php?id=" . $row['id'] . "'>detalhes</a>|<a href='#' class='deletar-link' data-id='" . $row['id'] . "' data-nome='" . $row['nome_produto'] . "'>deletar</a></td>";
                 echo "</tr>";
             }
+            
             ?>
         </table>
     </main>

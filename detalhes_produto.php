@@ -1,5 +1,5 @@
 <?php
- include 'func_php/conexao.php';
+include 'functions/conexao.php';
 
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
@@ -30,8 +30,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 <head>
     <title>Detalhes do Produto</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
 </head>
 
 <body>

@@ -1,6 +1,6 @@
 <?php
 
-include '../func_php/conexao.php'; 
+include '../functions/conexao.php'; 
 
 function baixarItens($conexao) {
     $sql = "SELECT nome_categoria, nome_produto, descricao, preco FROM produtos";

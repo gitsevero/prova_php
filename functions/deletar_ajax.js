@@ -3,7 +3,7 @@ $(document).ready(function () {
     function deletarProduto(id, nome) {
         $.ajax({
             type: "GET",
-            url: "deletar_produto.php",
+            url: "functions/deletar_produto.php",
             data: { id: id },
             success: function () {
 

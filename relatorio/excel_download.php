@@ -1,5 +1,5 @@
 <?php
-include '../func_php/conexao.php'; 
+include '../functions/conexao.php'; 
 require 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -8,7 +8,7 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 
-/
+
 function baixarItens($conexao) {
     $sql = "SELECT nome_categoria, nome_produto, descricao, preco FROM produtos";
     $resultado = mysqli_query($conexao, $sql);

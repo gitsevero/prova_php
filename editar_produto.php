@@ -1,5 +1,5 @@
 <?php
-include 'func_php/conexao.php';
+include 'functions/conexao.php';
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
