@@ -10,7 +10,7 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 
 function baixarItens($conexao) {
-    $sql = "SELECT nome_categoria, nome_produto, descricao, preco FROM produtos";
+    $sql = "SELECT id, nome_categoria, nome_produto, descricao, CONCAT(moeda, ' ',preco ) AS preco_com_moeda FROM produtos";
     $resultado = mysqli_query($conexao, $sql);
 
     if (!$resultado) {
@@ -22,7 +22,7 @@ function baixarItens($conexao) {
     $sheet = $spreadsheet->getActiveSheet();
 
     
-    $colunas = array('Nome de categoria', 'Nome', 'Descrição', 'Preço');
+    $colunas = array('Nome de categoria', 'Nome', 'Descrição', 'preco_com_moeda');
     $colIndex = 1;
     foreach ($colunas as $coluna) {
         $sheet->setCellValueByColumnAndRow($colIndex, 1, $coluna);

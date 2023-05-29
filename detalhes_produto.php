@@ -37,8 +37,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 <body>
     <header>
         <p> <a href="adicionar_produto_formulario.html">Cadastro de produtos</a> </p>
-        <p> <a href="main.php">Home</a> </p>
-        <p>produtos</p>
+        <p> Home </p>
+        <p><a href="main.php">Produtos</a></p>
     </header>
     <h1>Detalhes do Produto</h1>
     <main>

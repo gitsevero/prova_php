@@ -32,8 +32,8 @@ include 'functions/conexao.php';
 <body>
     <header>
         <p> <a href="adicionar_produto_formulario.html"> Cadastro de produtos</a></p>
-        <p> <a href="main.php">Home</a> </p>
-        <p>produtos</p>
+        <p> Home </p>
+        <p><a href="main.php">Produtos</a></p>
     </header>
     <main>
         <h2> Produtos</h2>
@@ -52,7 +52,7 @@ include 'functions/conexao.php';
                 <td></td>
             </tr>
             <?php
-            $sql = "SELECT id, nome_categoria, nome_produto, descricao, CONCAT(preco, ' ', moeda) AS preco_com_moeda FROM produtos";
+            $sql = "SELECT id, nome_categoria, nome_produto, descricao, CONCAT(moeda, ' ',preco ) AS preco_com_moeda FROM produtos";
             $resultado = mysqli_query($conexao, $sql);
             
             while ($row = mysqli_fetch_assoc($resultado)) {

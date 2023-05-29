@@ -3,7 +3,7 @@
 include '../functions/conexao.php'; 
 
 function baixarItens($conexao) {
-    $sql = "SELECT nome_categoria, nome_produto, descricao, preco FROM produtos";
+    $sql = "SELECT id, nome_categoria, nome_produto, descricao, CONCAT(moeda, ' ',preco ) AS preco_com_moeda FROM produtos";
     $resultado = mysqli_query($conexao, $sql);
 
     if (!$resultado) {
