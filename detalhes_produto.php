@@ -35,10 +35,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 </head>
 
 <body>
-    <header>
-        <p> <a href="adicionar_produto_formulario.html">Cadastro de produtos</a> </p>
-        <p> Home </p>
-        <p><a href="main.php">Produtos</a></p>
+<header>
+        <p> <a href="adicionar_produto_formulario.php"> Cadastro de produtos</a></p>
+        <p><a href="main.php">Home</a></p>
+        <p><a href="categoria.php">Produtos</a></p>
     </header>
     <h1>Detalhes do Produto</h1>
     <main>

@@ -3,11 +3,12 @@ include 'functions/conexao.php';
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    if (isset($_POST['nome_produto']) && isset($_POST['descricao']) && isset($_POST['preco'])) {
+    if (isset($_POST['nome_produto']) && isset($_POST['descricao'])&& isset($_POST['categoria']) && isset($_POST['preco'])) {
         $nome_produto = $_POST['nome_produto'];
+        $nome_categoria = $_POST['categoria'];
         $descricao = $_POST['descricao'];
         $preco = $_POST['preco'];
-        $sql = "UPDATE produtos SET nome_produto = '$nome_produto', descricao = '$descricao', preco = '$preco', data_atualizacao = CURRENT_TIMESTAMP WHERE id = $id";
+        $sql = "UPDATE produtos SET nome_categoria='$nome_categoria', nome_produto = '$nome_produto', descricao = '$descricao', preco = '$preco', data_atualizacao = CURRENT_TIMESTAMP WHERE id = $id";
 
         if ($conexao->query($sql) === TRUE) {
             header("Location: main.php?id=$id&success=true");
@@ -46,17 +47,34 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 </head>
 
 <body>
-    <header>
-        <p> <a href="adicionar_produto_formulario.html">Cadastro de produtos</a> </p>
-        <p> <a href="main.php">Home</a> </p>
-        <p>produtos</p>
+<header>
+        <p> <a href="adicionar_produto_formulario.php"> Cadastro de produtos</a></p>
+        <p><a href="main.php">Home</a></p>
+        <p><a href="categoria.php">Produtos</a></p>
     </header>
     <h1>Editar Produto</h1>
     <main>
         <form method="POST" action="editar_produto.php?id=<?php echo $id; ?>">
             <label for="nome">Nome do produto:</label>
             <input type="text" name="nome_produto" value="<?php echo $nome_produto; ?>" required><br>
+            <select name="categoria" required>
+            <option value="" disabled selected>Selecione a categoria</option>
+            <?php
+            include 'functions/conexao.php';
+            $sql2 = "SELECT categorias_de_produtos FROM categorias";
+            $resultado2 = mysqli_query($conexao, $sql2);
+            
+            while ($row = mysqli_fetch_assoc($resultado2)) {
+                
+                echo "<option>" . $row['categorias_de_produtos'] . "</option>";
+              
+            }
+            
+            ?>
 
+         
+
+            </select>
             <label for="descricao">Descrição:</label>
             <textarea name="descricao" required><?php echo $descricao; ?></textarea><br>
 
