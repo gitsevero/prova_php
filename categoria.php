@@ -9,7 +9,7 @@ include 'functions/conexao.php';
     <link rel="stylesheet" href="css/style_main.css">
     <link rel="stylesheet" href="css/header.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="functions/deletar_ajax.js"></script>
+    <script src="functions/deletar_ajax_categoria.js"></script>
     <title>Registros de Produtos</title>
     <script>
         function removeURLParams() {
@@ -36,32 +36,26 @@ include 'functions/conexao.php';
         <p><a href="categoria.php">Produtos</a></p>
     </header>
     <main>
-        <h2> Produtos</h2>
+        <h2> Categorias</h2>
         <div id="buttons">
-            <button id="novo-produto"><a href="adicionar_produto_formulario.php">Novo produto</a></button>
-            <button><a href='relatorio/txt_download.php'>TXT</a> </button>
-            <button><a href='relatorio/excel_download.php'>EXCEL</a> </button>
-            <button><a href='relatorio/pdf.php'>PDF</a></button>
+            <button ><a href='adicionar_categoria.html'>Nova categoria</a></button>
+            
         </div>
         <table id="produtos-table">
-            <tr>
+            <tr><td>ID</td>
                 <td>Categoria</td>
-                <td>Nome</td>
-                <td>Descrição</td>
-                <td>Preço</td>
                 <td></td>
             </tr>
             <?php
-            $sql = "SELECT id, nome_categoria, nome_produto, descricao, CONCAT(moeda, ' ',preco ) AS preco_com_moeda FROM produtos";
+            $sql = "SELECT id, categorias_de_produtos FROM categorias";
             $resultado = mysqli_query($conexao, $sql);
             
             while ($row = mysqli_fetch_assoc($resultado)) {
                 echo "<tr>";
-                echo "<td>" . $row['nome_categoria'] . "</td>";
-                echo "<td>" . $row['nome_produto'] . "</td>";
-                echo "<td>" . $row['descricao'] . "</td>";
-                echo "<td>" . $row['preco_com_moeda'] . "</td>";
-                echo "<td id='edit'><a href='editar_produto.php?id=" . $row['id'] . "'>editar</a>|<a href='detalhes_produto.php?id=" . $row['id'] . "'>detalhes</a>|<a href='#' class='deletar-link' data-id='" . $row['id'] . "' data-nome='" . $row['nome_produto'] . "'>deletar</a></td>";
+                echo "<td>" . $row['id'] . "</td>";
+                echo "<td>" . $row['categorias_de_produtos'] . "</td>";
+                echo "<td id='edit'><a href='editar_categoria.php?id=" . $row['id'] . "'>editar</a>|<a href='#' class='deletar-link' data-id='" . $row['id'] . "' data-nome='" . $row['categorias_de_produtos'] . "'>deletar</a></td>
+                ";
                 echo "</tr>";
             }
             

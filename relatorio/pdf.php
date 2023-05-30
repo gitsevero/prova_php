@@ -44,7 +44,7 @@ function gerarPDF() {
         die("Falha na conexão: " . mysqli_connect_error());
     }
 
-    $sql = "SELECT id, nome_categoria, nome_produto, descricao, CONCAT(moeda, ' ',preco ) AS preco_com_moeda FROM produtos";
+    $sql = "SELECT  nome_categoria, nome_produto, descricao, CONCAT(moeda, ' ',preco ) AS preco_com_moeda FROM produtos";
     
     $resultado = mysqli_query($conexao, $sql);
 
