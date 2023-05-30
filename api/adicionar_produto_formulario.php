@@ -1,3 +1,6 @@
+<?php
+include 'functions/conexao.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -10,18 +13,29 @@
 
 <body>
     <header>
-        <p> <a href="adicionar_produto_formulario.html">Cadastro de produtos</a> </p>
-        <p> Home </p>
-        <p><a href="main.php">Produtos</a></p>
+        <p> <a href="adicionar_produto_formulario.php"> Cadastro de produtos</a></p>
+        <p><a href="main.php">Home</a></p>
+        <p><a href="categoria.php">Produtos</a></p>
     </header>
     <h1>Adicionar Produto</h1>
     <main>
         <form method="POST" action="functions/adicionar_produto.php">
             <label for="categoria">Nome da categoria:</label>
-            <input type="text" name="nome_categoria" required pattern="[A-Za-z]{2,}"><br>
+            <select name="categoria" required>
+                <option value="" disabled selected>Selecione a categoria</option>
+             <?php
+             $sql = "SELECT categorias_de_produtos FROM categorias";
+             $resultado = mysqli_query($conexao, $sql);
+
+              while ($row = mysqli_fetch_assoc($resultado)) {
+                 $categoria = $row['categorias_de_produtos'];
+                      echo "<option value='$categoria'>$categoria</option>";
+            }
+              ?>
+            </select>
 
             <label for="nome">Nome do produto:</label>
-            <input type="text" name="nome_produto" required pattern="[A-Za-z]{5,}"><br>
+            <input type="text" name="nome_produto" minlength="3"><br>
 
             <label for="descricao">Descrição:</label>
             <textarea name="descricao" required minlength="8"></textarea><br>

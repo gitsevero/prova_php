@@ -31,14 +31,14 @@ include 'functions/conexao.php';
 
 <body>
     <header>
-        <p> <a href="adicionar_produto_formulario.html"> Cadastro de produtos</a></p>
-        <p> Home </p>
-        <p><a href="main.php">Produtos</a></p>
+        <p> <a href="adicionar_produto_formulario.php"> Cadastro de produtos</a></p>
+        <p><a href="main.php">Home</a></p>
+        <p><a href="categoria.php">Produtos</a></p>
     </header>
     <main>
         <h2> Produtos</h2>
         <div id="buttons">
-            <button id="novo-produto"><a href="adicionar_produto_formulario.html">Novo produto</a></button>
+            <button id="novo-produto"><a href="adicionar_produto_formulario.php">Novo produto</a></button>
             <button><a href='relatorio/txt_download.php'>TXT</a> </button>
             <button><a href='relatorio/excel_download.php'>EXCEL</a> </button>
             <button><a href='relatorio/pdf.php'>PDF</a></button>
